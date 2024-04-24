@@ -1,0 +1,46 @@
+Imobiliária
+
+Link Figma - https://www.figma.com/file/IDEI1zu6X7TpPKPOQ1oNrG/Projeto-Imobiliaria?type=design&node-id=0-1&mode=design&t=zGz4xYxh8bD7PiHZ-0
+
+Link CMS/CRUD - https://www.figma.com/file/Qq9YiXO8BsLdKnhzjCkRJV/CMS?type=design&node-id=0-1&mode=design&t=PcvoIOzpt5sJHjHO-0
+
+
+Requisitos
+Seguir layout do Figma
+Componentização de cada uma das páginas, header e footer
+Construção de rotas para amostragem dinâmica dos componentes
+Model para cada uma das informações de acordo com o que virá da API
+Controle de usuários para acessos ao site clientes e site CMS
+Algumas informações de texto serão customizadas pelos CMS
+  - Home
+    Filtro para buscar um imóvel, ao clicar no botão “Pesquisar” vai para a tela de “Busca”
+    Campo “Comprar ou Alugar” será um select com as opções “Comprar” ou “Alugar”
+    Campo “Quartos” será um select com os valores de 1 até 5
+    Campo “Banheiros” será um select com os valores de 1 até 5
+    Campo “Vagas” será um select com os valores de 1 até 5
+    Campo “Tipo do imóvel” será um select com os valores sendo carregados da API dos tipos que serão colocados no CMS
+    Campo “Busque por localização” será de texto que será complementado com o campo “Tipo da busca” que será um campo select com os valores “Cidade” ou “Bairro”
+    Imóveis em destaques serão selecionados pelo CMS
+    Ao clicar no botão “Conhecer” ir para a página de “Interna imóvel”
+ - Busca
+    Filtros terão os mesmos campos que os colocados na “Home”
+    Abaixo mostrar os imóveis referentes ao filtro feito
+    Ao clicar no botão “Conhecer” ir para a página de “Interna imóvel”
+    Interna imóvel
+    Estrela para o usuário logado conseguir favoritar o imóvel e salvar em seu usuário
+    Botão “Ver todas fotos” abrirá um modal com a galeria de todas as fotos do imóvel
+    Botão “Falar com corretor” abrirá um modal com as informações do corretor daquele imóvel
+ - Login
+    Local para o usuário fazer o Login e acessar o sistema
+    Ambos os campos são obrigatórios
+    Link para criar conta irá para a página de “Sign Up”
+    Botão “Entrar” ficará disponível somente após preenchimento de todos os campos, se o login estiver correto, volte para a página da Home, se estiver errado mostre um aviso na tela
+ - Sign Up
+    Todos os campos são	 obrigatórios
+    Botão “Entrar” ficará disponível somente após preenchimento de todos os campos e caso o usuário não exista, ele será criado
+    Campos “Senha” e “Confirmar senha” precisarão estar com o mesmo valor
+ - CMS
+    Ter um CRUD para todas as informações
+    Somente será logado com um perfil tipo admin
+    Usar componentes compartilhados para todas as tabelas
+    Ter um CRUD de usuarios também para conseguir fazer o manuseio deles

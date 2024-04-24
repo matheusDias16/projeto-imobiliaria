@@ -1,0 +1,224 @@
+<h1>
+   Imoveis
+  </h1>
+  
+  <hr style="margin: 10px;">
+  
+  <table>
+    <thead>
+      <tr>
+        <td>
+          ID
+        </td>
+        <td>
+          Imovel
+        </td>
+        <td>
+          Compra
+        </td>
+        <td>
+         Aluguel
+        </td>
+        <!-- <td>
+            Tipos
+        </td> -->
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let imv of imovel">
+        <td>
+          {{ imv.id }}
+        </td>
+        <td>
+          {{ imv.anuncio }}
+        </td>
+        <td>
+          R$ {{ imv.valores.compra}}
+        </td>
+         <td>
+          {{imv.valores.aluguel}}
+        </td> 
+        <!-- <td>
+            {{ getImvValue(imv.tipo) }}
+        </td> -->
+        <td>
+          <button type="button" (click)="abreModalEditar(imv.id)">
+            EDITAR
+          </button>
+        </td>
+        <td>
+          <button type="button" (click)="deletarImoveis(imv.id)">
+            DELETAR
+          </button>
+        </td>
+      </tr>
+    </tbody> 
+  </table>
+  <div class="modal"  *ngIf="modalAberto">
+
+    <div class="modal-content">
+      <span class="close" (click)="fechaModal()">&times;</span>
+      
+      <h3 *ngIf="edicaoImovel"> 
+        Edição de imovel
+      </h3>
+
+  
+      <form [formGroup]="formularioImv">
+  
+        <div>
+          <label>
+              Anuncio do imovel
+              <input type="text" formControlName="anuncio">
+          </label>
+      </div>
+  
+      <div>
+          <label>
+              Corretor
+              <select formControlName="corretor">
+                  <option *ngFor="let corre of corretor" [value]="corre.id">
+                      {{corre.nome}}
+                  </option>
+              </select>
+          </label>
+      </div>
+  
+      <div>
+          <label>
+              Tipo do imovel
+              <select formControlName="tipoImovel">
+                  <option *ngFor="let tp of tipo" [value]="tp.id">
+                      {{tp.tipo}}
+                  </option>
+              </select>
+          </label>
+      </div>
+      <div>
+          <label>
+              Tipo de venda
+              <select formControlName="tipoDeVenda">
+                  <option value="ambos">ambos</option>
+                  <option value="aluguel">aluguel</option>
+                  <option value="compra">compra</option>
+              </select>
+          </label>
+      </div>
+      <div>
+        <label>
+            Estado
+            <input type="text" formControlName="estado">
+        </label>
+    </div>
+
+    <div>
+        <label>
+            Cidade
+            <input type="text" formControlName="cidade">
+        </label>
+    </div>
+    <div>
+        <label>
+            Bairro
+            <select formControlName="bairro">
+                <optIon *ngFor="let bair of bairro" [value]="bair.bairro">
+                    {{bair.bairro}}
+                </optIon>
+            </select>
+        </label>
+    </div>
+    <div>
+        <label>
+            Cep
+            <input type="number" formControlName="cep">
+        </label>
+    </div>
+    <div>
+        <label>
+            Metragem
+            <input type="text" formControlName="metragem">
+        </label>
+    </div>
+    <div>
+        <label>
+            Quartos
+            <input type="number" formControlName="quartos">
+        </label>
+    </div>
+    <div>
+        <label>
+            Banheiros
+            <input type="number" formControlName="banheiros">
+        </label>
+    </div>
+    <div>
+        <label>
+            Vagas
+            <input type="number" formControlName="vagas">
+        </label>
+    </div>
+    <div>
+        <label>
+            Caracteristicas
+            <input type="text" formControlName="caracteristicas">
+        </label>
+    </div>
+    <div>
+        <label>
+            Sobre
+            <input type="text" formControlName="sobre">
+        </label>
+    </div>
+
+    <div>
+
+        <h3>
+            Valores
+        </h3>
+        <ng-container *ngFor="let val of camposValores">
+            <label>
+                Compra
+                <input type="text" [(ngModel)]="val.compra" [ngModelOptions]="{standalone: true}">
+            </label>
+            <label>
+                Aluguel
+                <input type="number" [(ngModel)]="val.aluguel" [ngModelOptions]="{standalone: true}">
+            </label>
+            <label>
+                Condominio
+                <input type="number" [(ngModel)]="val.condominio" [ngModelOptions]="{standalone: true}">
+            </label>
+            <label>
+                Iptu
+                <input type="number" [(ngModel)]="val.iptu" [ngModelOptions]="{standalone: true}">
+            </label>
+            <br>
+        </ng-container>
+
+        <div>
+            <h3>
+                Imagem
+            </h3>
+            <ng-container *ngFor="let img of campoImagem">
+                <label>
+                    Caminho
+                    <input type="text" formControlName="caminho">
+                </label>
+                <label>
+                    Lugar
+                    <input type="text" formControlName="lugar">
+                </label>
+                <br>
+            </ng-container>
+        </div>
+    </div>
+    <button type="button"  (click)="editaImovel()">
+      Editar 
+    </button>
+
+
+        
+    
+    
+    

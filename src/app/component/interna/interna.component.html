@@ -1,0 +1,79 @@
+<h1>
+    {{imovel.anuncio}}
+</h1>
+<div class="cont" *ngIf="imovel.imagens.length > 0">
+
+    <div class="image">
+        <img [src]="(imovel.imagens[0].caminho)" alt="">
+    </div>
+
+
+    <div class="imgMais">
+        <div> <img [src]="(imovel.imagens[1].caminho)" alt=""></div>
+        <div (click)="abrirModalImg()">
+             <img [src]="(imovel.imagens[2].caminho)" alt="" >
+        </div>
+
+    </div>
+
+
+</div>
+<div class="caracteristicas">
+    <div class="area">
+        <p>area <br>{{imovel.metragem}}m2</p>
+        <p>Quartos <br>{{imovel.quartos}}</p>
+        <p>Banheiros <br>{{imovel.banheiros}}</p>
+        <p>Vagas<br>{{imovel.vagas}}</p>
+
+    </div>
+    <div class="geral">
+        <div class="loc">
+            <div class="h1">
+                <p>Estado: {{imovel.estado}}</p>
+                <p>Cidade: {{imovel.cidade}}</p>
+                <p>Bairro: {{imovel.bairro}}</p>
+                <h1>Características do imovel</h1>
+
+            </div>
+            <div class="carac">
+                <p> {{imovel.caracteristicas}} </p>
+            </div>
+            <h1>Sobre o imovel</h1>
+            <div class="sobre">
+                <p> {{imovel.sobre}} </p>
+            </div>
+        </div>
+
+        <div class="quadro">
+            <div class="info">
+                <div class="parag">
+                    <p> Aluguel <b>R$ {{imovel.valores.aluguel}} </b> </p>
+                       <p> Condominio <b>R$ {{imovel.valores.condominio}} </b> </p>
+                       <p> IPTU <b> R$ {{imovel.valores.iptu}} </b></p>
+                        <p> Valor total <b> R$ {{imovel.valores.aluguel + imovel.valores.condominio +
+                            imovel.valores.iptu}}</b> </p>
+                      <p>  Valor p/compra <b> R$ {{imovel.valores.compra}}</b></p>
+
+                    <button>
+                        Falar com corretor
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<div class="modal" *ngIf="modalImg">
+<div class="modal-content" >
+    <span  class="close" (click)="fecharModal()">&times;</span>
+    <h1 >
+      Galeria
+    </h1>
+
+    <div class="mdl" *ngFor="let img of imovel.imagens">
+        <img [src]="(img.caminho)" alt="" >
+    </div>
+
+</div>
+</div>

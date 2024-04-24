@@ -1,0 +1,120 @@
+<div class="imagem">
+    <img src="../assets/Rectangle 2 (1).png" alt="">
+</div>
+<div class="busca">
+    <ng-container> <!--*ngFor="let busca of buscaDestaque"-->
+        <div><!--*ngFor="let procura of busca.home"-->
+            <h1>Encontre o seu novo lar</h1>
+            <div class="quadrados">
+
+                <form [formGroup]="busca">
+
+                    <mat-form-field>
+
+                        <mat-select formControlName="comprarAlugar">
+                            <mat-option value="">Alugar ou Comprar</mat-option>
+                            <mat-option value="aluguel">Alugar</mat-option>
+                            <mat-option value="comprar">Comprar</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-select formControlName="quartos">
+                            <mat-option value="">Quartos</mat-option>
+                            <mat-option value="1">1</mat-option>
+                            <mat-option value="2">2</mat-option>
+                            <mat-option value="3">3</mat-option>
+                            <mat-option value="4">4</mat-option>
+                            <mat-option value="5">5</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-select formControlName="banheiros">
+                            <mat-option value="">Banheiros</mat-option>
+                            <mat-option value="1">1</mat-option>
+                            <mat-option value="2">2</mat-option>
+                            <mat-option value="3">3</mat-option>
+                            <mat-option value="4">4</mat-option>
+                            <mat-option value="5">5</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-select formControlName="vagas">
+                            <mat-option value="">Vagas</mat-option>
+                            <mat-option value="1">1</mat-option>
+                            <mat-option value="2">2</mat-option>
+                            <mat-option value="3">3</mat-option>
+                            <mat-option value="4">4</mat-option>
+                            <mat-option value="5">5</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-select formControlName="tipo">
+                            <mat-option value="">Tipo do imóvel</mat-option>
+                            <ng-container *ngFor="let tipo of tipos">
+                                <mat-option [value]="tipo.id">
+                                    {{ tipo.tipo }}
+                                </mat-option>
+                            </ng-container>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        
+                        <input matInput type="text" formControlName="localizacao" placeholder="Busque por localização">
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-select formControlName="tipoDaBusca">
+                            <mat-option value="">Tipo da busca</mat-option>
+                            <mat-option value="cidade">Cidade</mat-option>
+                            <mat-option value="bairro">Bairro</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                </form>
+            </div>
+            <div class="botao">
+                <button type="button" (click)="pesquisarImovel()">Pesquisar</button>
+            </div>
+        </div>
+    </ng-container>
+    <h1>Destaques</h1>
+    <div class="imoveisDestaque"><!---->
+        <ng-container *ngFor="let imov of imovel">
+            <div class="item" *ngIf="buscaDestaque.home.imoveisDestaque.includes(imov.id)">
+                <div class="imagem">
+                    <img [src]="(imov.imagens[0].caminho)" alt="">
+
+                    <span class="textoImagem"> aluguel: R$ {{imov.valores.aluguel}} </span>
+                    <span class="textoImagem2"> compra: R$ {{imov.valores.compra}} </span>
+
+                </div>
+                <div class="caracteristicas">
+                    <p>{{imov.anuncio}} </p>
+                    <div class="banheiro">
+                        <p>{{imov.metragem}} m2</p>
+                        <p>{{imov.quartos}} quartos</p>
+
+                    </div>
+                    <div class="banheiro">
+                        <p>{{imov.banheiros}} banheiros</p>
+                        <p>{{imov.vagas}} vaga</p>
+
+
+                    </div>
+                    <button routerLink="/interna/{{imov.id}}">
+                        Conhecer
+                    </button>
+                </div>
+
+            </div>
+        </ng-container>
+
+    </div>
+
+
+</div>

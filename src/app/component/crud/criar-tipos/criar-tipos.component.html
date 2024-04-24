@@ -1,0 +1,48 @@
+<h1>
+    Todos os tipos
+   </h1>
+   
+   <hr style="margin: 10px;">
+   
+   <table>
+     
+     <tbody>
+       <tr *ngFor="let tp of tipo">
+         <td>
+           {{ tp.tipo }}
+         </td>
+        
+         
+           <button type="button" (click)="editaTipos(tp)">
+             EDITAR
+           </button>
+        
+         <td>
+           <button type="button" (click)="deletarTipos(tp.id)">
+             DELETAR
+           </button>
+         </td>
+       </tr>
+     </tbody> 
+   </table>
+
+<br><br>
+<h1>
+    Criar tipos
+</h1>
+<hr style="margin: 10px;">
+
+<form [formGroup]="formularioTipo">
+
+    <div>
+        <label>
+            Tipo
+            <input type="text" formControlName="tipos">
+        </label>
+    </div>
+
+   
+</form>
+<button type="button" (click)="criaTipos()">
+    Finalizar
+</button>
